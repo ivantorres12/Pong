@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
             float y = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.y);
             Vector2 direct = new Vector2(1, y).normalized;
             GetComponent<Rigidbody2D>().velocity = direct * speed;
-            speed += (float)0.2;
+            speed += (float)0.4;
             fuenteDeAudio.clip = audioRaqueta;
             fuenteDeAudio.Play();
         }else if (collision.gameObject.name == "PadRight")
@@ -46,12 +46,13 @@ public class Ball : MonoBehaviour
             float y = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.y);
             Vector2 direct = new Vector2(-1, y).normalized;
             GetComponent<Rigidbody2D>().velocity = direct * speed;
-            speed += (float)0.2;
+            speed += (float)0.4;
             fuenteDeAudio.clip = audioRaqueta;
             fuenteDeAudio.Play();
         }
         else
         {
+            speed += (float)0.4;
             fuenteDeAudio.clip = audioRebote;
             fuenteDeAudio.Play();
         }
@@ -81,12 +82,12 @@ public class Ball : MonoBehaviour
         GetComponent<Rigidbody2D>().position = Vector2.zero;
         if (direct.Equals("GoalLeft"))
         {
-            speed = 8;
+            speed = 10;
             GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
         }
         else if (direct.Equals("GoalRight"))
         {
-            speed = 8;
+            speed = 10;
             GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
         }
         fuenteDeAudio.clip = audioGol;
